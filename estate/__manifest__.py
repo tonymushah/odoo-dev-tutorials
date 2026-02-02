@@ -4,5 +4,5 @@
     "depends": ["base"],
     "category": "Tutorials",
     'application': True,
-    "data": ["security/ir.model.access.csv"]
+    "data": ["views/estate_property_views.xml","security/ir.model.access.csv"]
 }
