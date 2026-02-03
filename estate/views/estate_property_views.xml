@@ -16,6 +16,11 @@
                     name="availability"
                     domain="['|', ('state', '=', 'new'), ('state', '=', 'offer_received')]"
                 />
+                <filter
+                    string="Postcode"
+                    name="groupby_postcode"
+                    context="{'group_by': 'postcode'}"
+                />
             </search>
         </field>
     </record>
