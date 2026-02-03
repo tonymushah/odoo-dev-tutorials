@@ -1,0 +1,11 @@
+{
+  "languages": {
+    "Python": {
+      "language_servers": [
+        "!basedpyright", // the "!" indicates exclusion
+        "odoo",
+        "ruff",
+      ],
+    },
+  },
+}
