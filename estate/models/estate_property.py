@@ -1,4 +1,9 @@
 from odoo import models, fields
+from datetime import timedelta
+
+def date_availability_default():
+    current_date = fields.Date().today();
+    return current_date + timedelta(weeks = 13)
 
 class Property(models.Model):
     _name = "estate.property"
@@ -7,10 +12,10 @@ class Property(models.Model):
     name = fields.Char("Property name", required = True)
     description = fields.Text()
     postcode = fields.Char()
-    date_availability = fields.Date()
+    date_availability = fields.Date(copy = False, default = date_availability_default() )
     expected_price = fields.Float(required = True)
-    selling_price = fields.Float()
-    bedrooms = fields.Integer()
+    selling_price = fields.Float(readonly = True, copy = False)
+    bedrooms = fields.Integer(default = 2)
     living_area = fields.Integer()
     facades = fields.Integer()
     garage = fields.Boolean()
