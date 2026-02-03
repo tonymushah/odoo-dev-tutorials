@@ -23,7 +23,7 @@
                     <h1>
                         <field
                             name="name"
-                            required="type"
+                            required="true"
                             placeholder="Property Tag Name"
                         />
                     </h1>
