@@ -6,7 +6,12 @@
             name="Advertisements"
             action="estate_property_action"
         />
-        <menuitem id="estate_property_root_setting" name="Settings">
+        <menuitem id="estate_property_root_settings" name="Settings">
+            <menuitem
+                id="estate_property_types_root_setting"
+                name="Property Types"
+                action="estate_property_type_action"
+            />
         </menuitem>
     </menuitem>
 </odoo>
