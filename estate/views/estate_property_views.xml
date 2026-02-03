@@ -105,6 +105,15 @@
                                 <field name="state" string="State" />
                             </group>
                         </page>
+                        <page string="Other Info">
+                            <group>
+                                <field
+                                    name="saleperson_user_id"
+                                    string="Saleperson"
+                                />
+                                <field name="buyer_partner_id" string="Buyer" />
+                            </group>
+                        </page>
                     </notebook>
                 </sheet>
             </form>
