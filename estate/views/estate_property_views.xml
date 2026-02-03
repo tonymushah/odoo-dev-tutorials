@@ -11,6 +11,11 @@
                 <field name="bedrooms" string="Bedrooms" />
                 <field name="living_area" string="Living Area" />
                 <field name="facades" string="Facades" />
+                <filter
+                    string="Available"
+                    name="availability"
+                    domain="['|', ('state', '=', 'new'), ('state', '=', 'offer_received')]"
+                />
             </search>
         </field>
     </record>
@@ -88,6 +93,7 @@
                                     name="garden_orientation"
                                     string="Garden Orientation"
                                 />
+                                <field name="state" string="State" />
                             </group>
                         </page>
                     </notebook>
