@@ -2,7 +2,7 @@
   "languages": {
     "Python": {
       "language_servers": [
-        "!basedpyright", // the "!" indicates exclusion
+        "!basedpyright", // Disabling `basedpyright` because it doesn't seems to find odoo???
         "odoo",
         "ruff",
       ],
