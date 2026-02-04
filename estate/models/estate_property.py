@@ -76,7 +76,25 @@ class Property(models.Model):
             self.garden_orientation = None
 
     def sold_estate_property(self):
-        raise UserError(_("Not yet implemented"))
+        for property in self:
+            match property.state:
+                case "sold":
+                    raise UserError(_("Cannot sell a property twice."))
+                case "canceled":
+                    raise UserError(_("Cannot sell a cancelled property."))
+                case _def:
+                    property.state = "sold"
+        return True
+        # raise UserError(_("Not yet implemented"))
 
     def cancel_estate_property(self):
-        raise UserError(_("Not yet implemented"))
+        for property in self:
+            match property.state:
+                case "sold":
+                    raise UserError(_("Cannot cancel a sold property."))
+                case "canceled":
+                    raise UserError(_("Cannot cancel a property twice."))
+                case _def:
+                    property.state = "canceled"
+        return True
+        # raise UserError(_("Not yet implemented"))
