@@ -106,6 +106,10 @@
                                     string="Garden Orientation"
                                 />
                                 <field name="state" string="State" />
+                                <field
+                                    name="total_area"
+                                    string="Total Area (sqm)"
+                                />
                             </group>
                         </page>
                         <page string="Offers">
