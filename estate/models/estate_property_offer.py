@@ -1,6 +1,7 @@
 from datetime import timedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class PropertyOffer(models.Model):
@@ -28,3 +29,9 @@ class PropertyOffer(models.Model):
         for offer in self:
             t_delta = offer.date_deadline - offer.create_date.date()
             offer.validity = t_delta.days
+
+    def accept_offer_action(self):
+        raise UserError(_("Not yet implemented"))
+
+    def refuse_offer_action(self):
+        raise UserError(_("Not yet implemented"))
