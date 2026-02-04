@@ -1,6 +1,7 @@
 from datetime import timedelta
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 def date_availability_default():
@@ -73,3 +74,9 @@ class Property(models.Model):
         else:
             self.garden_area = None
             self.garden_orientation = None
+
+    def sold_estate_property(self):
+        raise UserError(_("Not yet implemented"))
+
+    def cancel_estate_property(self):
+        raise UserError(_("Not yet implemented"))
