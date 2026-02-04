@@ -25,5 +25,5 @@ class PropertyOffer(models.Model):
 
     def _inverse_date_deadline(self):
         for offer in self:
-            t_delta = offer.date_deadline - offer.create_date
+            t_delta = offer.date_deadline - offer.create_date.date()
             offer.validity = t_delta.days
