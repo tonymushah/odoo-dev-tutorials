@@ -55,6 +55,13 @@ class PropertyOffer(models.Model):
 
     def refuse_offer_action(self):
         for offer in self:
+            match offer.property_id.state:
+                case "offer_accepted" | "sold" | "cancelled":
+                    raise UserError(
+                        _(
+                            "The property already has an accepted offer or sold or cancelled"
+                        )
+                    )
             match offer.status:
                 case "accepted":
                     raise UserError(_("Cannot refuse an already accepted offer."))
