@@ -31,7 +31,27 @@ class PropertyOffer(models.Model):
             offer.validity = t_delta.days
 
     def accept_offer_action(self):
-        raise UserError(_("Not yet implemented"))
+        for offer in self:
+            match offer.property_id.state:
+                case "offer_accepted" | "sold" | "cancelled":
+                    raise UserError(
+                        _(
+                            "The property already has an accepted offer or sold or cancelled"
+                        )
+                    )
+
+            match offer.status:
+                case "accepted":
+                    raise UserError(_("Cannot accept an already accepted offer."))
+                case "refused":
+                    raise UserError(_("Cannot accept an already refused offer."))
+                case _def:
+                    offer.status = "accepted"
+                    offer.property_id.buyer_partner_id = offer.buyer_partner_id
+                    offer.property_id.selling_price = offer.price
+                    offer.property_id.state = "offer_accepted"
+
+        return True
 
     def refuse_offer_action(self):
         for offer in self:
