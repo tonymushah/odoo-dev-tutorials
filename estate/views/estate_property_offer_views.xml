@@ -19,17 +19,19 @@
             <sheet>
                 <group>
                     <field name="price" string="Price" />
-                    <field name="status" string="Status" />
                     <field
                             name="buyer_partner_id"
                             string="Partner"
                             required="true"
                         />
+                    <field name="status" string="Status" />
+                    <!--
                     <field
                             name="property_id"
                             string="Property"
                             required="true"
                         />
+                        -->
                 </group>
             </sheet>
         </form>
