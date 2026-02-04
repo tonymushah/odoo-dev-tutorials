@@ -61,4 +61,6 @@ class Property(models.Model):
     @api.depends("offer_ids.price")
     def _compute_best_price(self):
         for record in self:
-            record.best_price = max(record.offer_ids.mapped("price"))
+            offer_prices = record.offer_ids.mapped("price")
+
+            record.best_price = max(offer_prices) if offer_prices else 0
