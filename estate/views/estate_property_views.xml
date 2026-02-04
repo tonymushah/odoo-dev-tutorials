@@ -125,39 +125,4 @@
             </form>
         </field>
     </record>
-    <record id="estate_property_offer_view_list" model="ir.ui.view">
-        <field name="name">estate.property.offer.list</field>
-        <field name="model">estate.property.offer</field>
-        <field name="arch" type="xml">
-            <list string="Property Offers">
-                <field name="price" string="Price" />
-                <field name="buyer_partner_id" string="Partner" />
-                <field name="status" string="Status" />
-            </list>
-        </field>
-    </record>
-    <record id="estate_property_offer_offer" model="ir.ui.view">
-        <field name="name">estate.property.offer.form</field>
-        <field name="model">estate.property.offer</field>
-        <field name="arch" type="xml">
-            <form string="Property Offer">
-                <sheet>
-                    <group>
-                        <field name="price" string="Price" />
-                        <field name="status" string="Status" />
-                        <field
-                            name="buyer_partner_id"
-                            string="Partner"
-                            required="true"
-                        />
-                        <field
-                            name="property_id"
-                            string="Property"
-                            required="true"
-                        />
-                    </group>
-                </sheet>
-            </form>
-        </field>
-    </record>
 </odoo>
