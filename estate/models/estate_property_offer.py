@@ -18,10 +18,11 @@ class PropertyOffer(models.Model):
         compute="_compute_date_deadline", inverse="_inverse_date_deadline"
     )
 
-    @api.depends("validity")
+    @api.depends("validity", "create_date")
     def _compute_date_deadline(self):
         for offer in self:
-            offer.date_deadline = offer.create_date + timedelta(days=offer.validity)
+            if offer.create_date:
+                offer.date_deadline = offer.create_date + timedelta(days=offer.validity)
 
     def _inverse_date_deadline(self):
         for offer in self:
