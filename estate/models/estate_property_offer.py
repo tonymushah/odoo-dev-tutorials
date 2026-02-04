@@ -34,4 +34,12 @@ class PropertyOffer(models.Model):
         raise UserError(_("Not yet implemented"))
 
     def refuse_offer_action(self):
-        raise UserError(_("Not yet implemented"))
+        for offer in self:
+            match offer.status:
+                case "accepted":
+                    raise UserError(_("Cannot refuse an already accepted offer."))
+                case "refused":
+                    raise UserError(_("Cannot refuse an already refused offer."))
+                case _def:
+                    offer.status = "refused"
+        return True
