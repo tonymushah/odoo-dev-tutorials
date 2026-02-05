@@ -7,3 +7,6 @@ class PropertyType(models.Model):
 
     name = fields.Char(required=True)
     active = fields.Boolean(default=True)
+    property_ids = fields.One2many(
+        "estate.property", "property_type_id", string="Properties"
+    )
