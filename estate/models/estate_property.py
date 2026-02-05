@@ -1,7 +1,8 @@
 from datetime import timedelta
 
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+from odoo.exceptions import UserError, ValidationError
+from odoo.tools.float_utils import float_compare, float_is_zero
 
 
 def date_availability_default():
@@ -104,3 +105,20 @@ class Property(models.Model):
                     property.state = "canceled"
         return True
         # raise UserError(_("Not yet implemented"))
+
+    @api.constrains("selling_price", "expected_price")
+    def _check_selling_price_with_expected_price(self):
+        for property in self:
+            if property.selling_price and property.expected_price:
+                if not float_is_zero(property.selling_price) and not float_is_zero(
+                    property.expected_price
+                ):
+                    if (
+                        float_compare(
+                            property.selling_price, property.expected_price * 0.9
+                        )
+                        < 0
+                    ):
+                        raise ValidationError(
+                            "the selling price shouldn't be less than 90% of the expected price."
+                        )
