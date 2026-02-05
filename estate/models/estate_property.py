@@ -110,12 +110,14 @@ class Property(models.Model):
     def _check_selling_price_with_expected_price(self):
         for property in self:
             if property.selling_price and property.expected_price:
-                if not float_is_zero(property.selling_price) and not float_is_zero(
-                    property.expected_price
-                ):
+                if not float_is_zero(
+                    property.selling_price, precision_digits=6
+                ) and not float_is_zero(property.expected_price, precision_digits=6):
                     if (
                         float_compare(
-                            property.selling_price, property.expected_price * 0.9
+                            property.selling_price,
+                            property.expected_price * 0.9,
+                            precision_digits=6,
                         )
                         < 0
                     ):
