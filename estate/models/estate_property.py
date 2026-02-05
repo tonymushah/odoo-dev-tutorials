@@ -12,12 +12,6 @@ def date_availability_default():
 class Property(models.Model):
     _name = "estate.property"
     _description = "The Real Estate Property"
-    _check_expected_price = models.Constraint(
-        "CHECK(expected_price > 0)", "the expected price should be strictly positive"
-    )
-    _check_selling_price = models.Constraint(
-        "CHECK(selling_price > 0)", "the selling price should be strictly positive"
-    )
 
     name = fields.Char("Property name", required=True)
     description = fields.Text()
@@ -25,6 +19,12 @@ class Property(models.Model):
     date_availability = fields.Date(copy=False, default=date_availability_default())
     expected_price = fields.Float(required=True)
     selling_price = fields.Float(readonly=True, copy=False)
+    _check_expected_price = models.Constraint(
+        "CHECK(expected_price > 0)", "the expected price should be strictly positive"
+    )
+    _check_selling_price = models.Constraint(
+        "CHECK(selling_price > 0)", "the selling price should be strictly positive"
+    )
     bedrooms = fields.Integer(default=2)
     living_area = fields.Integer()
     facades = fields.Integer()
