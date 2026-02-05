@@ -13,6 +13,7 @@ def date_availability_default():
 class Property(models.Model):
     _name = "estate.property"
     _description = "The Real Estate Property"
+    _order = "id desc"
 
     name = fields.Char("Property name", required=True)
     description = fields.Text()
