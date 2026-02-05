@@ -12,6 +12,7 @@
             <list string="Property Type">
                 <field name="name" string="Name" />
                 <field name="active" string="Activated" />
+                <field name="sequence" widget="handle" />
             </list>
         </field>
     </record>
