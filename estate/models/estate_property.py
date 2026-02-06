@@ -104,7 +104,7 @@ class Property(models.Model):
                 case "canceled":
                     raise UserError(_("Cannot cancel a property twice."))
                 case _def:
-                    property.state = "canceled"
+                    property.state = "cancelled"
         return True
         # raise UserError(_("Not yet implemented"))
 
