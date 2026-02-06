@@ -33,7 +33,13 @@
         <field name="name">estate.property.list</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <list string="Properties" editable="top">
+            <list
+                string="Properties"
+                editable="top"
+                decoration-success="state == 'offer_received' or state == 'offer_accepted'"
+                decoration-bf="state == 'offer_accepted'"
+                decoration-muted="state == 'sold'"
+            >
                 <field name="name" string="Title" />
                 <field name="postcode" string="Postcode" />
                 <field name="bedrooms" string="Living Area (sqm)" />
