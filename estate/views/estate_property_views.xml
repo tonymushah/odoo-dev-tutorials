@@ -85,6 +85,7 @@
                             <field
                                 name="property_type_id"
                                 string="Property Type"
+                                options="{'no_create': true}"
                             />
                             <field name="postcode" string="Postcode" />
                             <field
