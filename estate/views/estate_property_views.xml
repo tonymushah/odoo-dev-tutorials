@@ -33,7 +33,7 @@
         <field name="name">estate.property.list</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <list string="Properties">
+            <list string="Properties" editable="1">
                 <field name="name" string="Title" />
                 <field name="postcode" string="Postcode" />
                 <field name="bedrooms" string="Living Area (sqm)" />
