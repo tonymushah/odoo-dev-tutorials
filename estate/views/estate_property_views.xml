@@ -143,7 +143,11 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <field name="offer_ids" string="Offers" />
+                            <field
+                                name="offer_ids"
+                                string="Offers"
+                                readonly="state != 'new' and state != 'offer_received'"
+                            />
                         </page>
                         <page string="Other Info">
                             <group>
