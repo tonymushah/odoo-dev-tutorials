@@ -53,6 +53,7 @@
                         name="sold_estate_property"
                         string="Sold"
                         type="object"
+                        invisible="state == 'sold' or state == 'cancelled'"
                     >
                         Sold
                     </button>
@@ -60,6 +61,7 @@
                         name="cancel_estate_property"
                         string="Cancel"
                         type="object"
+                        invisible="state == 'sold' or state == 'cancelled'"
                     >
                         Cancel
                     </button>
