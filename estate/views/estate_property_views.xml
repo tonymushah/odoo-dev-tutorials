@@ -129,10 +129,12 @@
                                 <field
                                     name="garden_area"
                                     string="Garden Area (sqm)"
+                                    invisible="not garden"
                                 />
                                 <field
                                     name="garden_orientation"
                                     string="Garden Orientation"
+                                    invisible="not garden"
                                 />
                                 <field
                                     name="total_area"
