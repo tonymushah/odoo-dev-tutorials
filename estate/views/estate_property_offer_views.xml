@@ -6,7 +6,7 @@
     <field name="arch" type="xml">
         <list
                 string="Property Offers"
-                editable="top"
+                editable="bottom"
                 decoration-success="status == 'accepted'"
                 decoration-danger="status == 'refused'"
             >
@@ -17,16 +17,16 @@
             <button
                     name="accept_offer_action"
                     type="object"
-                    invisible="property_id.state != 'new' and property_id.state != 'offer_received'"
+                    invisible="status != None"
                     icon="fa-check"
                 />
             <button
                     name="refuse_offer_action"
                     type="object"
-                    invisible="property_id.state != 'new' and property_id.state != 'offer_received'"
+                    invisible="status != None"
                     icon="fa-close"
                 />
-            <field name="status" string="Status" />
+            <field name="status" string="Status" optional="hide" />
         </list>
     </field>
 </record>
