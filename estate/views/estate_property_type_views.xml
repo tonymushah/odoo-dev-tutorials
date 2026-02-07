@@ -32,13 +32,33 @@
         <field name="arch" type="xml">
             <form string="Property Type">
                 <sheet>
-                    <h1>
-                        <field
-                            name="name"
-                            required="true"
-                            placeholder="Property Type Name"
-                        />
-                    </h1>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            name="action_show_offers"
+                            type="object"
+                            icon="fa-bars"
+                            invisible="offer_count == 0"
+                        >
+                            <div class="o_stat_info">
+                                <span class="o_stat_value">
+                                    <field name="offer_count" />
+                                </span>
+                                <span class="o_stat_text">
+                                    Offers
+                                </span>
+                            </div>
+                        </button>
+                    </div>
+                    <div>
+                        <h1>
+                            <field
+                                name="name"
+                                required="true"
+                                placeholder="Property Type Name"
+                            />
+                        </h1>
+                    </div>
                     <notebook>
                         <page string="Properties">
                             <field name="property_ids">
