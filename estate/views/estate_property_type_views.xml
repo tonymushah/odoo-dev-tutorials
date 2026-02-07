@@ -17,6 +17,11 @@
                     string="Offer Count"
                     optional="hide"
                 />
+                <field
+                    name="property_offer_ids"
+                    string="Offers"
+                    optional="hide"
+                />
                 <field name="sequence" widget="handle" />
             </list>
         </field>
