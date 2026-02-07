@@ -1,4 +1,5 @@
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class PropertyType(models.Model):
@@ -21,3 +22,6 @@ class PropertyType(models.Model):
             prop_type.offer_count = (
                 len(prop_type.property_offer_ids) if prop_type.property_offer_ids else 0
             )
+
+    def action_show_offers(self):
+        raise UserError(_("Not yet implemented"))
