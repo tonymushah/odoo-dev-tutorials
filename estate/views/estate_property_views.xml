@@ -9,7 +9,11 @@
                 <field name="postcode" string="Postcode" />
                 <field name="expected_price" string="Expected Price" />
                 <field name="bedrooms" string="Bedrooms" />
-                <field name="living_area" string="Living Area" />
+                <field
+                    name="living_area"
+                    string="Living Area"
+                    filter_domain="[('living_area', '>=', self)]"
+                />
                 <field name="facades" string="Facades" />
                 <filter
                     string="Available"
