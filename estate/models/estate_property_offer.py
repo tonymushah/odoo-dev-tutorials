@@ -89,3 +89,10 @@ class PropertyOffer(models.Model):
                 case _def:
                     offer.status = "refused"
         return True
+
+    @api.model
+    def create(self, vals):
+        for property in self.env["estate.property"].browse(vals["property_id"]):
+            if property.state == "new":
+                property.state = "offer_received"
+        return super().create(vals)
