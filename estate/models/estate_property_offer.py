@@ -94,7 +94,9 @@ class PropertyOffer(models.Model):
 
     @api.model
     def create(self, vals):
-        for property in self.env["estate.property"].browse(vals["property_id"]):
+        for property in self.env["estate.property"].browse(
+            map(lambda val: val["property_id"], vals)
+        ):
             if property.state == "new":
                 property.state = "offer_received"
         return super().create(vals)
