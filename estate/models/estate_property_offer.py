@@ -26,7 +26,7 @@ class PropertyOffer(models.Model):
         related="property_id.property_type_id", store=True
     )
     hide_offer = fields.Boolean(
-        compute="_compute_hide_offer", copy=False, default=False
+        compute="_compute_hide_offer", copy=False, default=False, store=True
     )
 
     @api.depends("validity", "create_date")
@@ -38,12 +38,12 @@ class PropertyOffer(models.Model):
     @api.depends("status", "property_id.state")
     def _compute_hide_offer(self):
         for offer in self:
-            if offer.hide_offer:
-                state = offer.property_id.state
-                status = offer.status
-                # print(status)
-                if (state != "new" and state != "offer_received") or status:
-                    offer.hide_offer = True
+            # if offer.hide_offer:
+            state = offer.property_id.state
+            status = offer.status
+            # print(status)
+            if (state != "new" and state != "offer_received") or status:
+                offer.hide_offer = True
 
     def _inverse_date_deadline(self):
         for offer in self:
