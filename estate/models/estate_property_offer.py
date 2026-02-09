@@ -25,12 +25,23 @@ class PropertyOffer(models.Model):
     property_type_id = fields.Many2one(
         related="property_id.property_type_id", store=True
     )
+    hide_offer = fields.Boolean(compute="_compute_hide_offer")
 
     @api.depends("validity", "create_date")
     def _compute_date_deadline(self):
         for offer in self:
             if offer.create_date:
                 offer.date_deadline = offer.create_date + timedelta(days=offer.validity)
+
+    @api.depends("status", "property_id.state")
+    def _compute_hide_offer(self):
+        for offer in self:
+            if offer.property_id.state not in [
+                "new",
+                "offer_received",
+            ] or offer.status in ["accepted", "refused"]:
+                offer.hide_offer = True
+                continue
 
     def _inverse_date_deadline(self):
         for offer in self:
