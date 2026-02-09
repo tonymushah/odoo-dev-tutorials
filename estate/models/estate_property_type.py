@@ -1,5 +1,6 @@
 from odoo import _, api, fields, models
-from odoo.exceptions import UserError
+
+# from odoo.exceptions import UserError
 
 
 class PropertyType(models.Model):
@@ -24,4 +25,11 @@ class PropertyType(models.Model):
             )
 
     def action_show_offers(self):
-        raise UserError(_("Not yet implemented"))
+        # raise UserError(_("Not yet implemented"))
+        return {
+            "type": "ir.actions.act_window",
+            "name": _("Offers"),
+            "res_model": "estate.property.offer",
+            "views": [[False, "list"]],
+            "domain": [("property_type_id", "=", self.id)],
+        }
