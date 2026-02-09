@@ -126,3 +126,11 @@ class Property(models.Model):
                         raise ValidationError(
                             "the selling price shouldn't be less than 90% of the expected price."
                         )
+
+    @api.ondelete(at_uninstall=False)
+    def _unlink_if_not_new_cancelled(self):
+        for property in self:
+            if property.state not in ["new", "cancelled"]:
+                raise UserError(
+                    _("You can only delete 'New' or 'Cancelled' properties")
+                )
