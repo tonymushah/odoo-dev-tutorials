@@ -17,11 +17,13 @@
                 <button
                     name="accept_offer_action"
                     type="object"
+                    invisible="hide_offer"
                     icon="fa-check"
                 />
                 <button
                     name="refuse_offer_action"
                     type="object"
+                    invisible="hide_offer"
                     icon="fa-close"
                 />
                 <field name="status" string="Status" optional="hide" />
